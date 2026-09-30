@@ -1,0 +1,42 @@
+version: "3"
+
+silent: true
+
+vars:
+  DOCKER_REPO: ghcr.io
+  DOCKER_OWNER: specsnl
+  DOCKER_IMAGE_NAME: opentofu
+  # Latatest version of Hadolint: https://hub.docker.com/r/hadolint/hadolint/tags or https://github.com/hadolint/hadolint/releases
+  HADOLINT_TAG_VERSION: v2.15.1
+
+tasks:
+
+  build:
+    desc: Build the OpenTofu image
+    deps: [lint]
+    cmds:
+      - docker build
+        --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
+        .
+
+  lint:
+    desc: Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
+    cmds:
+      - docker run
+        --interactive
+        --rm
+        hadolint/hadolint:{{.HADOLINT_TAG_VERSION}}
+        hadolint
+        -
+        < Dockerfile
+
+  shell:
+    desc: Interactive shell
+    interactive: true
+    cmds:
+      - docker run
+        --interactive
+        --tty
+        --rm
+        --entrypoint=/bin/bash
+        {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
