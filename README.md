@@ -13,7 +13,7 @@ docker pull ghcr.io/specsnl/opentofu:latest
 Interactive shell and mounting the current directory:
 
 ```bash
-docker run -it -v $(pwd):/workspace --rm --entrypoint=/bin/bash ghcr.io/specsnl/opentofu:latest
+docker run -it -v $(pwd):/workspace --rm ghcr.io/specsnl/opentofu:latest
 ```
 
 Default workspace: `/workspace`
