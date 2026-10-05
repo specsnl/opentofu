@@ -20,7 +20,7 @@ Default workspace: `/workspace`
 
 ## Task
 
-This project uses [Task](https://taskfile.dev) (an task runner / build tool).
+This project uses [Task](https://taskfile.dev) (a task runner / build tool).
 
 Available tasks for this project:
 
