@@ -6,7 +6,7 @@ vars:
   DOCKER_REPO: ghcr.io
   DOCKER_OWNER: specsnl
   DOCKER_IMAGE_NAME: opentofu
-  # Latatest version of Hadolint: https://hub.docker.com/r/hadolint/hadolint/tags or https://github.com/hadolint/hadolint/releases
+  # Latest version of Hadolint: https://hub.docker.com/r/hadolint/hadolint/tags or https://github.com/hadolint/hadolint/releases
   HADOLINT_TAG_VERSION: v2.15.1
 
 tasks:
@@ -18,6 +18,16 @@ tasks:
       - docker build
         --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
         .
+
+  check-updates:
+    desc: Check for newer versions of the pinned tools
+    cmds:
+      - |
+        status=0
+        for check in scripts/check-*-version.sh; do
+          "$check" || status=$(( $? > status ? $? : status ))
+        done
+        exit $status
 
   lint:
     desc: Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
