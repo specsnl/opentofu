@@ -25,7 +25,8 @@ This project uses [Task](https://taskfile.dev) (an task runner / build tool).
 Available tasks for this project:
 
 ```sh
-* build:       Build the OpenTofu image
-* lint:        Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
-* shell:       Interactive shell
+* build:               Build the OpenTofu image
+* check-updates:       Check for newer versions of the pinned tools
+* lint:                Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
+* shell:               Interactive shell
 ```

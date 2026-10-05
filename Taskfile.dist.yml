@@ -19,6 +19,16 @@ tasks:
         --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
         .
 
+  check-updates:
+    desc: Check for newer versions of the pinned tools
+    cmds:
+      - |
+        status=0
+        for check in scripts/check-*-version.sh; do
+          "$check" || status=$(( $? > status ? $? : status ))
+        done
+        exit $status
+
   lint:
     desc: Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
     cmds:
