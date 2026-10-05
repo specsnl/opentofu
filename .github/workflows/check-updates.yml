@@ -18,3 +18,12 @@ jobs:
         uses: actions/checkout@v7
       - name: Check for a newer Terramate version
         run: ./scripts/check-terramate-version.sh
+
+  hadolint:
+    name: Hadolint
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check for a newer Hadolint version
+        run: ./scripts/check-hadolint-version.sh
