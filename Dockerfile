@@ -28,6 +28,31 @@ RUN case "${TARGETARCH}" in \
     && tar -xzf "${archive}" terramate \
     && install -m 0755 terramate /usr/local/bin/terramate
 
+# Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
+FROM alpine:3.24.2 AS tofu-age
+
+# Latest version of tofu-age: https://github.com/specsnl/tofu-age/releases
+ARG TOFU_AGE_VERSION=0.1.0
+# Checksums can be found in the checksums.txt file attached to the release
+ARG TOFU_AGE_CHECKSUM_AMD64=de2b22d90803bb63cf5fea3f83614eb4a47a41bda73c04e5b065a40f58cfd691
+ARG TOFU_AGE_CHECKSUM_ARM64=012f343a3280fa7553774b0bdf810f185f3f234cda190ca15c82368e8f2ab7ba
+ARG TARGETARCH
+
+WORKDIR /tmp/tofu-age
+
+RUN case "${TARGETARCH}" in \
+            amd64) checksum="${TOFU_AGE_CHECKSUM_AMD64}" ;; \
+            arm64) checksum="${TOFU_AGE_CHECKSUM_ARM64}" ;; \
+            *) echo "Unsupported architecture: ${TARGETARCH}" >&2; exit 1 ;; \
+        esac \
+    && archive="tofu-age_linux_${TARGETARCH}.tar.gz" \
+    && wget -q "https://github.com/specsnl/tofu-age/releases/download/v${TOFU_AGE_VERSION}/${archive}" \
+    && echo "${checksum}  ${archive}" > checksum.txt \
+    && sha256sum -c checksum.txt \
+    && tar -xzf "${archive}" tofu-age \
+    && install -m 0755 tofu-age /usr/local/bin/tofu-age \
+    && tofu-age --version
+
 FROM alpine:3.24.2
 
 RUN apk add --no-cache --upgrade --no-progress \
@@ -38,6 +63,7 @@ RUN apk add --no-cache --upgrade --no-progress \
 
 COPY --from=opentofu /usr/local/bin/tofu /usr/local/bin/tofu
 COPY --from=terramate /usr/local/bin/terramate /usr/local/bin/terramate
+COPY --from=tofu-age /usr/local/bin/tofu-age /usr/local/bin/tofu-age
 
 WORKDIR /workspace
 
