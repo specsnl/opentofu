@@ -2,7 +2,14 @@
 
 [![Build Images](https://github.com/specsnl/opentofu/actions/workflows/main.yml/badge.svg)](https://github.com/specsnl/opentofu/actions/workflows/main.yml)
 
-A OpenTofu and Terramate image.
+An OpenTofu image with Terramate and [tofu-age](https://github.com/specsnl/tofu-age).
+
+The image ships the `tofu-age` binary only, never an age identity: inject `TOFU_AGE_IDENTITY` at runtime to
+decrypt state and plan files:
+
+```bash
+docker run -it -v $(pwd):/workspace -e TOFU_AGE_IDENTITY --rm ghcr.io/specsnl/opentofu:latest
+```
 
 Pulling image from GitHub Container Registry:
 
