@@ -28,6 +28,15 @@ jobs:
       - name: Check for a newer tofu-age version
         run: ./scripts/check-tofu-age-version.sh
 
+  upctl:
+    name: upctl
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check for a newer upctl version
+        run: ./scripts/check-upctl-version.sh
+
   hadolint:
     name: Hadolint
     runs-on: ubuntu-26.04

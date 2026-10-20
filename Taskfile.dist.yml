@@ -12,11 +12,16 @@ vars:
 tasks:
 
   build:
-    desc: Build the OpenTofu image
+    desc: Build the OpenTofu and upctl images
     deps: [lint]
     cmds:
       - docker build
+        --target base
         --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
+        .
+      - docker build
+        --target upctl
+        --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}/upctl:latest
         .
 
   check-updates:
@@ -50,3 +55,14 @@ tasks:
         --rm
         --entrypoint=/bin/bash
         {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
+
+  shell:upctl:
+    desc: Interactive shell in the upctl image
+    interactive: true
+    cmds:
+      - docker run
+        --interactive
+        --tty
+        --rm
+        --entrypoint=/bin/bash
+        {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}/upctl:latest
