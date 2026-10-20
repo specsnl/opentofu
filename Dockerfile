@@ -53,7 +53,7 @@ RUN case "${TARGETARCH}" in \
     && install -m 0755 tofu-age /usr/local/bin/tofu-age \
     && tofu-age --version
 
-FROM alpine:3.24.2
+FROM alpine:3.24.2 AS base
 
 RUN apk add --no-cache --upgrade --no-progress \
         'ca-certificates>=20260909' \

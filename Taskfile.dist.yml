@@ -16,6 +16,7 @@ tasks:
     deps: [lint]
     cmds:
       - docker build
+        --target base
         --tag {{.DOCKER_REPO}}/{{.DOCKER_OWNER}}/{{.DOCKER_IMAGE_NAME}}:latest
         .
 

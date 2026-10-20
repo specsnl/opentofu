@@ -49,15 +49,15 @@
                         "integration_id": 15368
                     },
                     {
-                        "context": "Build (ubuntu-26.04, linux/amd64) / Build Image",
+                        "context": "Build (ubuntu-26.04, linux/amd64) / Build Image (base)",
                         "integration_id": 15368
                     },
                     {
-                        "context": "Build (ubuntu-26.04-arm, linux/arm64) / Build Image",
+                        "context": "Build (ubuntu-26.04-arm, linux/arm64) / Build Image (base)",
                         "integration_id": 15368
                     },
                     {
-                        "context": "Merge / Merge Images",
+                        "context": "Merge / Merge Images (base)",
                         "integration_id": 15368
                     }
                 ]

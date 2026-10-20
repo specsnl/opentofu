@@ -40,6 +40,7 @@ jobs:
       runs-on: ${{ matrix.runs-on.os }}
       platform: ${{ matrix.runs-on.platform }}
       image-name: ghcr.io/${{ github.repository }}
+      target: base
 
   merge:
     name: Merge
@@ -48,3 +49,4 @@ jobs:
     with:
       runs-on: ubuntu-26.04
       image-name: ghcr.io/${{ github.repository }}
+      target: base
