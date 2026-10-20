@@ -50,3 +50,30 @@ jobs:
       runs-on: ubuntu-26.04
       image-name: ghcr.io/${{ github.repository }}
       target: base
+
+  build-upctl:
+    name: Build upctl
+    uses: specsnl/github-actions/.github/workflows/build.yml@2.4.4
+    needs: linting
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on:
+          - os: ubuntu-26.04
+            platform: linux/amd64
+          - os: ubuntu-26.04-arm
+            platform: linux/arm64
+    with:
+      runs-on: ${{ matrix.runs-on.os }}
+      platform: ${{ matrix.runs-on.platform }}
+      image-name: ghcr.io/${{ github.repository }}/upctl
+      target: upctl
+
+  merge-upctl:
+    name: Merge upctl
+    uses: specsnl/github-actions/.github/workflows/merge.yml@2.4.4
+    needs: build-upctl
+    with:
+      runs-on: ubuntu-26.04
+      image-name: ghcr.io/${{ github.repository }}/upctl
+      target: upctl

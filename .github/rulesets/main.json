@@ -59,6 +59,18 @@
                     {
                         "context": "Merge / Merge Images (base)",
                         "integration_id": 15368
+                    },
+                    {
+                        "context": "Build upctl (ubuntu-26.04, linux/amd64) / Build Image (upctl)",
+                        "integration_id": 15368
+                    },
+                    {
+                        "context": "Build upctl (ubuntu-26.04-arm, linux/arm64) / Build Image (upctl)",
+                        "integration_id": 15368
+                    },
+                    {
+                        "context": "Merge upctl / Merge Images (upctl)",
+                        "integration_id": 15368
                     }
                 ]
             }
