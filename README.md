@@ -25,6 +25,15 @@ docker run -it -v $(pwd):/workspace --rm ghcr.io/specsnl/opentofu:latest
 
 Default workspace: `/workspace`
 
+## upctl
+
+The `ghcr.io/specsnl/opentofu/upctl` image extends the OpenTofu image with the
+[UpCloud CLI](https://github.com/UpCloudLtd/upcloud-cli) (`upctl`), `jq` and `yq`:
+
+```bash
+docker run -it -v $(pwd):/workspace --rm ghcr.io/specsnl/opentofu/upctl:latest
+```
+
 ## Task
 
 This project uses [Task](https://taskfile.dev) (a task runner / build tool).
@@ -32,8 +41,9 @@ This project uses [Task](https://taskfile.dev) (a task runner / build tool).
 Available tasks for this project:
 
 ```sh
-* build:               Build the OpenTofu image
+* build:               Build the OpenTofu and upctl images
 * check-updates:       Check for newer versions of the pinned tools
 * lint:                Apply a Dockerfile linter (https://github.com/hadolint/hadolint)
 * shell:               Interactive shell
+* shell:upctl:         Interactive shell in the upctl image
 ```
