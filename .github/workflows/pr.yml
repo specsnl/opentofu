@@ -25,7 +25,7 @@ jobs:
 
   build:
     name: Build
-    uses: specsnl/github-actions/.github/workflows/build.yml@2.4.4
+    uses: specsnl/github-actions/.github/workflows/build.yml@3.0.2
     needs: linting
     strategy:
       fail-fast: false
@@ -43,7 +43,7 @@ jobs:
 
   merge:
     name: Merge
-    uses: specsnl/github-actions/.github/workflows/merge.yml@2.4.4
+    uses: specsnl/github-actions/.github/workflows/merge.yml@3.0.2
     needs: build
     with:
       runs-on: ubuntu-26.04
@@ -52,7 +52,7 @@ jobs:
 
   build-upctl:
     name: Build upctl
-    uses: specsnl/github-actions/.github/workflows/build.yml@2.4.4
+    uses: specsnl/github-actions/.github/workflows/build.yml@3.0.2
     needs: linting
     strategy:
       fail-fast: false
@@ -70,7 +70,7 @@ jobs:
 
   merge-upctl:
     name: Merge upctl
-    uses: specsnl/github-actions/.github/workflows/merge.yml@2.4.4
+    uses: specsnl/github-actions/.github/workflows/merge.yml@3.0.2
     needs: build-upctl
     with:
       runs-on: ubuntu-26.04
