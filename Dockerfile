@@ -54,7 +54,7 @@ RUN case "${TARGETARCH}" in \
     && tofu-age --version
 
 # Latest version of yq: https://hub.docker.com/r/mikefarah/yq/tags
-FROM mikefarah/yq:4.54.1 AS yq
+FROM mikefarah/yq:4.54.2 AS yq
 
 # Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
 FROM alpine:3.24.2 AS upcloud-cli
