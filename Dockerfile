@@ -5,7 +5,7 @@
 FROM ghcr.io/opentofu/opentofu:1.13.1-minimal AS opentofu
 
 # Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
-FROM alpine:3.24.2 AS terramate
+FROM alpine:3.24.3 AS terramate
 
 # Latest version of terramate: https://github.com/terramate-io/terramate/releases
 ARG TERRAMATE_VERSION=0.17.3
@@ -29,7 +29,7 @@ RUN case "${TARGETARCH}" in \
     && install -m 0755 terramate /usr/local/bin/terramate
 
 # Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
-FROM alpine:3.24.2 AS tofu-age
+FROM alpine:3.24.3 AS tofu-age
 
 # Latest version of tofu-age: https://github.com/specsnl/tofu-age/releases
 ARG TOFU_AGE_VERSION=0.1.0
@@ -57,7 +57,7 @@ RUN case "${TARGETARCH}" in \
 FROM mikefarah/yq:4.54.1 AS yq
 
 # Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
-FROM alpine:3.24.2 AS upcloud-cli
+FROM alpine:3.24.3 AS upcloud-cli
 
 # Latest version of upctl: https://github.com/UpCloudLtd/upcloud-cli/releases
 ARG UPCTL_VERSION=3.37.0
@@ -80,7 +80,7 @@ RUN case "${TARGETARCH}" in \
     && tar -xzf "${archive}" upctl \
     && install -m 0755 upctl /usr/local/bin/upctl
 
-FROM alpine:3.24.2 AS base
+FROM alpine:3.24.3 AS base
 
 RUN apk add --no-cache --upgrade --no-progress \
         'ca-certificates>=20260909' \
