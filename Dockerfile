@@ -32,10 +32,10 @@ RUN case "${TARGETARCH}" in \
 FROM alpine:3.24.4 AS tofu-age
 
 # Latest version of tofu-age: https://github.com/specsnl/tofu-age/releases
-ARG TOFU_AGE_VERSION=0.1.0
+ARG TOFU_AGE_VERSION=0.1.1
 # Checksums can be found in the checksums.txt file attached to the release
-ARG TOFU_AGE_CHECKSUM_AMD64=de2b22d90803bb63cf5fea3f83614eb4a47a41bda73c04e5b065a40f58cfd691
-ARG TOFU_AGE_CHECKSUM_ARM64=012f343a3280fa7553774b0bdf810f185f3f234cda190ca15c82368e8f2ab7ba
+ARG TOFU_AGE_CHECKSUM_AMD64=2ef4934f37cab97a149d8f10d6837f16f93c1966b3dfdcb0b6a5632996a0ed49
+ARG TOFU_AGE_CHECKSUM_ARM64=197a1aeafe96af2b86018110cbd94d676b4fbbc074bc333648c2f55425f442d7
 ARG TARGETARCH
 
 WORKDIR /tmp/tofu-age
