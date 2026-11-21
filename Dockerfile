@@ -8,10 +8,10 @@ FROM ghcr.io/opentofu/opentofu:1.13.9-minimal AS opentofu
 FROM alpine:3.24.4 AS terramate
 
 # Latest version of terramate: https://github.com/terramate-io/terramate/releases
-ARG TERRAMATE_VERSION=0.17.3
+ARG TERRAMATE_VERSION=0.17.4
 # Checksums can be found in the checksums.txt file attached to the release
-ARG TERRAMATE_CHECKSUM_AMD64=303fd597a76af00c728b3eb626493dc2a71585dcd679c5e07a338da44d24a060
-ARG TERRAMATE_CHECKSUM_ARM64=b3956602a1eeeee9ea40add6682375d3f74c87d47b269103653b7b825b1dfd4a
+ARG TERRAMATE_CHECKSUM_AMD64=4bd2bcaebf2e6366fa68cb8f89108ed6d2d67ce2b6ff944236cc94e67e12f2a2
+ARG TERRAMATE_CHECKSUM_ARM64=a63930f2691dc3ef970fe97bc5f79ddfcb62daa38c68ca4f6bb994364a30e046
 ARG TARGETARCH
 
 WORKDIR /tmp/terramate
