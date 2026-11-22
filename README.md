@@ -28,7 +28,7 @@ Default workspace: `/workspace`
 ## upctl
 
 The `ghcr.io/specsnl/opentofu/upctl` image extends the OpenTofu image with the
-[UpCloud CLI](https://github.com/UpCloudLtd/upcloud-cli) (`upctl`), `jq` and `yq`:
+[UpCloud CLI](https://github.com/UpCloudLtd/upcloud-cli) (`upctl`), `curl`, `jq`, `openssl` and `yq`:
 
 ```bash
 docker run -it -v $(pwd):/workspace --rm ghcr.io/specsnl/opentofu/upctl:latest

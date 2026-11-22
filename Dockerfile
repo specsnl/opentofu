@@ -99,7 +99,9 @@ CMD ["/bin/bash"]
 FROM base AS upctl
 
 RUN apk add --no-cache --upgrade --no-progress \
-        jq~=1.8
+        curl~=8.23 \
+        jq~=1.8 \
+        openssl~=3.5
 
 COPY --from=upcloud-cli /usr/local/bin/upctl /usr/local/bin/upctl
 COPY --from=yq /usr/bin/yq /usr/local/bin/yq
