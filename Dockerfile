@@ -2,7 +2,7 @@
 # check=error=true
 
 # Latest version of opentofu image: https://github.com/opentofu/opentofu/releases
-FROM ghcr.io/opentofu/opentofu:1.13.9-minimal AS opentofu
+FROM ghcr.io/opentofu/opentofu:1.13.10-minimal AS opentofu
 
 # Latest version of Alpine image: https://hub.docker.com/_/alpine/tags
 FROM alpine:3.24.4 AS terramate
